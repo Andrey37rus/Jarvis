@@ -8,7 +8,6 @@ import subprocess
 
 def run_programs(*args):
     """Запуск программ"""
-    print('имЯ заданное:', args)
     try:
         name = ' '.join(args[0]).lower()
         if len(name) != 0:

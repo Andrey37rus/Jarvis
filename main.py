@@ -147,7 +147,6 @@ def header(voice: str):
             elif len(text) > 1:
                 # name_index = text.index(name)
                 # text.pop(name_index)
-
                 off_line(voice)
                 return
     if head['head'] == 'on':
@@ -187,7 +186,6 @@ def off_line(voice: str):
 def argument(text: dict):
     text = text
     commands_list = list()
-
     argument_list = show_list_programms.list_chunk()
     try:
         if 'запустить' in text:
@@ -204,18 +202,18 @@ def argument(text: dict):
             # print('args', text)
             func_y(text)
 
-        elif 'выключить' in text:
-            values = text.values()
-            values = ' '.join(values)
-            values = values.split()
-
-            for elem in values:
-                for k, v in argument_list.items():
-                    if elem in v:
-                        commands_list.append(k)
-            commands_list = ' '.join(commands_list)
-            text['выключить'] = commands_list
-            func_y(text)
+        # elif 'выключить' in text:
+        #         values = text.values()
+        #         values = ' '.join(values)
+        #         values = values.split()
+        #
+        #         for elem in values:
+        #             for k, v in argument_list.items():
+        #                 if elem in v:
+        #                     commands_list.append(k)
+        #         commands_list = ' '.join(commands_list)
+        #         text['выключить'] = commands_list
+        #         func_y(text)
 
         elif 'закрыть' in text:
             values = text.values()
