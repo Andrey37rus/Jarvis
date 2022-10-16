@@ -1,7 +1,6 @@
 import webbrowser
 from answer_jarvis import answer_jarvis
-from playsound import playsound
-import os
+
 
 list_links = {'яндекс': 'https://ya.ru/',
               'гугл': 'https://www.google.ru/',
@@ -23,5 +22,12 @@ def open(text):
             return
 
 
+def search_by_internet(text):
+    answer_jarvis()
+    search = ''.join(text)
+    print('поиск в инете', search)
+    url = "https://yandex.ru/search/?text=" + search
+    webbrowser.get().open(url)
+    return
 
 

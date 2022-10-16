@@ -7,7 +7,7 @@ from clear_list_programms import clear
 from adding_programms import add_program
 from counter_strike_go import counter_strike
 from reproduction import up, down, soundless, sound
-from open_links import open
+from open_links import open, search_by_internet
 
 
 VA_NAME = 'Джарвис'
@@ -50,8 +50,8 @@ chunk = {
     'ты': ('ты', 'тот', 'та', 'то'),
     'здесь': ('здесь', 'здеся', 'сдесь'),
     'звук': ('звук', 'звуки', 'звонк', 'звонкий', 'звонок', 'звука'),
-    'без': ('без', 'бес', '')
-
+    'без': ('без', 'бес', ''),
+    'искать': ('искать', 'ищу', 'ищи', 'найди', 'найти')
     }
 
 
@@ -80,10 +80,11 @@ commands = {
     'я дома': home,
     # 'play': play_music,
     ('купить', 'купи', 'возьми', 'взять', 'позови', 'позвать'): counter_strike,
+    'искать': search_by_internet
 
 }
 
-words_arguments = ('закрыть', 'запустить')
+words_arguments = ('закрыть', 'запустить', 'искать')
 words_arguments_web = ('открыть', '')
 
 argument_list = dict()

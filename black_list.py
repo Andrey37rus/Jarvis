@@ -9,24 +9,33 @@
 # vol = int(input("Введите громкость звука в единицах (0..100): "))
 # Sound.volume_set(vol)
 
-import keyboard
+# import keyboard
+#
+# btn_up = 'up'
+# btn_down = 'down'
+#
+# enter = input('выберите громкость up or down: ')
+#
+# number = int(input('Выберите громкость от 0 100: '))
+#
+# if enter == 'up':
+#     keyboard.press("ctrl")
+#
+#     for num in range(number):
+#         keyboard.send(btn_up)
+#     print(number)
 
-btn_up = 'up'
-btn_down = 'down'
+# import webbrowser
 
-enter = input('выберите громкость up or down: ')
+# search_term = " ".join(args[0])
 
-number = int(input('Выберите громкость от 0 100: '))
+# search_term = 'стихи есенина'
+#
+# url = "https://yandex.ru/search/?text=" + search_term
+# webbrowser.get().open(url)
 
-if enter == 'up':
-    keyboard.press("ctrl")
-
-    for num in range(number):
-        keyboard.send(btn_up)
-    print(number)
-
-
-
+# url = "https://www.youtube.com/results?search_query=" + search_term
+# webbrowser.get().open(url)
 
 
 

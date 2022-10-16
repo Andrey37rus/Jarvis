@@ -1,4 +1,5 @@
 #  Jarvis 2.0
+# auto-py-to-exe для компиляции online
 
 import json
 from datetime import datetime
@@ -189,15 +190,12 @@ def argument(text: dict):
     text = text
     commands_list = list()
 
-
-
-
+    values = text.values()
+    values = ' '.join(values)
+    values = values.split()
     try:
         if 'запустить' in text:
             argument_list = show_list_programms.list_chunk()
-            values = text.values()
-            values = ' '.join(values)
-            values = values.split()
 
             for elem in values:
                 for k, v in argument_list.items():
@@ -220,13 +218,15 @@ def argument(text: dict):
         #         text['выключить'] = commands_list
         #         func_y(text)
 
+        elif 'искать' in text:
+            values_search = values[2:]
+            values_search = ' '.join(values_search)
+            text['искать'] = values_search
+            print('text', text)
+            func_y(text)
+
         elif 'открыть' in text:
             argument_list_links = open_links.list_links
-            values = text.values()
-            values = ' '.join(values)
-            values = values.split()
-            print('values', values)
-
             for elem in values:
                 for k, v in argument_list_links.items():
                     if elem in k:
@@ -241,10 +241,6 @@ def argument(text: dict):
 
         elif 'закрыть' in text:
             argument_list = show_list_programms.list_chunk()
-            values = text.values()
-            values = ' '.join(values)
-            values = values.split()
-
             for elem in values:
                 for k, v in argument_list.items():
                     if elem in v:
