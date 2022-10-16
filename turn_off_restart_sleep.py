@@ -7,6 +7,7 @@ def shutdown(*args):
 
     playsound(os.path.join('music_jar', 'shutdown.wav'))
     os.system("shutdown /s /t 1")
+    # subprocess.run(["shutdown", "-s"])
 
 
 def restart(*args):

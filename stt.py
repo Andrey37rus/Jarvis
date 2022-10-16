@@ -34,7 +34,7 @@ def va_listen(callback):
             #    print(rec.PartialResult())
 
 
-#
+
 # recognizer = speech_recognition.Recognizer()
 # microphone = speech_recognition.Microphone()
 #

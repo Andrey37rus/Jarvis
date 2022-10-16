@@ -4,6 +4,7 @@ import json
 from datetime import datetime
 
 import config
+import open_links
 import show_list_programms
 import stt
 from playsound import playsound
@@ -48,7 +49,7 @@ print(f"{config.VA_NAME} (v{config.VA_VER}) начал свою работу ...
 #                         playsound(os.path.join('music_jar', 'mistake.wav'))
 #                         print("Command not found")
 #
-#                     elif 'запустить' in good_text or 'закрыть' in good_text or 'выключить' in good_text:
+#                     elif 'запустить' in good_text or 'закрыть' in good_text or 'выключить' in good_text or 'открыть' in good_text:
 #                         good_text = ' '.join(good_text)
 #                         text = ' '.join(text)
 #                         commands_dict[good_text] = text
@@ -172,7 +173,8 @@ def off_line(voice: str):
         print("Command not found")
         return
     for elem in good_text:
-        if elem in config.words_arguments:
+        if elem in config.words_arguments or elem in config.words_arguments_web:
+            print(elem)
             good_text = ''.join(good_text)
             text = ' '.join(text)
             commands_dict[good_text] = text
@@ -186,9 +188,13 @@ def off_line(voice: str):
 def argument(text: dict):
     text = text
     commands_list = list()
-    argument_list = show_list_programms.list_chunk()
+
+
+
+
     try:
         if 'запустить' in text:
+            argument_list = show_list_programms.list_chunk()
             values = text.values()
             values = ' '.join(values)
             values = values.split()
@@ -199,7 +205,6 @@ def argument(text: dict):
                         commands_list.append(k)
             commands_list = ' '.join(commands_list)
             text['запустить'] = commands_list
-            # print('args', text)
             func_y(text)
 
         # elif 'выключить' in text:
@@ -215,7 +220,27 @@ def argument(text: dict):
         #         text['выключить'] = commands_list
         #         func_y(text)
 
+        elif 'открыть' in text:
+            argument_list_links = open_links.list_links
+            values = text.values()
+            values = ' '.join(values)
+            values = values.split()
+            print('values', values)
+
+            for elem in values:
+                for k, v in argument_list_links.items():
+                    if elem in k:
+                        commands_list.append(k)
+                        commands_list = ' '.join(commands_list)
+                        text['открыть'] = commands_list
+                        func_y(text)
+                        return
+            else:
+                playsound(os.path.join('music_jar', 'mistake.wav'))
+                print('нет ссылки')
+
         elif 'закрыть' in text:
+            argument_list = show_list_programms.list_chunk()
             values = text.values()
             values = ' '.join(values)
             values = values.split()
@@ -238,7 +263,7 @@ def func_y(text: dict):
     keys_keys = ' '.join(keys_keys)
     values_values = ' '.join(values_values)
 
-    if keys_keys in config.words_arguments:
+    if keys_keys in config.words_arguments or keys_keys in config.words_arguments_web:
         for key in config.commands.keys():
             fuzzz = fuzz.token_sort_ratio(keys_keys, key)
             if fuzzz == 100:
@@ -293,9 +318,9 @@ def main():
     #     if v == 'online':
     #         print('работает online')
     #         on_line()
-        # elif v == 'offline':
-        #     print('работает offline')
-        #     stt.va_listen(off_line)
+    #     elif v == 'offline':
+    #         print('работает offline')
+    #         stt.va_listen(off_line)
 
 
 if __name__ == "__main__":

@@ -21,6 +21,7 @@ def list_programs(*args):
 
 def list_chunk():
     """Показывает список программ добавленных в каталог"""
+
     if os.path.isfile('name_program.json'):
         with open('name_program.json', 'r') as file:
             data = json.load(file)
