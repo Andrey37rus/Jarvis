@@ -5,6 +5,24 @@
 #
 #
 
+# import ctypes
+# import py_win_keyboard_layout
+#
+# def get_layout():
+#     u = ctypes.windll.LoadLibrary("user32.dll")
+#     pf = getattr(u, "GetKeyboardLayout")
+#     if hex(pf(0)) == '0x4190419':
+#         return 'ru'
+#     if hex(pf(0)) == '0x4090409':
+#         return 'en'
+
+
+
+
+# import win32api
+#
+# win32api.LoadKeyboardLayout("00000419", 1)
+
 # from sound import Sound
 # vol = int(input("Введите громкость звука в единицах (0..100): "))
 # Sound.volume_set(vol)

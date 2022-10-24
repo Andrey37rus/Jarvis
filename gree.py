@@ -14,14 +14,18 @@ def good_days(*args):
     return
 
 
-def thanks():
+def thanks(*args):
     playsound(os.path.join('music_jar', 'thanks.wav'))
     return
 
 
-def i_need():
+def i_need(*args):
     playsound(os.path.join('music_jar', 'yes_ser.wav'))
     return
 
+
+def mistake(*args):
+    playsound(os.path.join('music_jar', 'mistake.wav'))
+    return
 
 
