@@ -1,8 +1,10 @@
+import time
 import webbrowser
-from answer_jarvis import answer_jarvis
+from gree import answer_jarvis, i_need
 import pyautogui as pg
 import ctypes
 import py_win_keyboard_layout
+
 
 list_links = {'яндекс': 'https://ya.ru/',
               'гугл': 'https://www.google.ru/',
@@ -13,7 +15,10 @@ list_links = {'яндекс': 'https://ya.ru/',
 
 def search_str_youtube():
     webbrowser.open_new_tab("https://www.youtube.com/")
-    answer_jarvis()
+
+    time.sleep(2)
+    for i in range(4):
+        pg.press(['tab'])
 
 
 def open(text):
@@ -71,14 +76,18 @@ def text_search(text: str):
               'з': 'p', 'х': '[', 'ъ': ']', 'ф': 'a', 'ы': 's', 'в': 'd', 'а': 'f', 'п': 'g', 'р': 'h', 'о': 'j',
               'л': 'k', 'д': 'l', 'ж': ';', 'э': "'", 'я': 'z', 'ч': 'x', 'с': 'c', 'м': 'v', 'и': 'b', 'т': 'n',
               'ь': 'm', 'б': ',', 'ю': '.'}
+
     x = get_layout()
+
+    num = int
     if x == 'en':
         num = 0x4090409
-    else:
+    elif x == 'ru':
        num = 0x4190419
+
     if x == 'en':
         py_win_keyboard_layout.change_foreground_window_keyboard_layout(0x4190419)
-
+    i_need()
     for elem in word_list:
         if elem == ' ':
             pg.press('space')
@@ -86,7 +95,7 @@ def text_search(text: str):
             if elem == k:
                 pg.typewrite(v)
     pg.press(['enter'])
-    py_win_keyboard_layout.change_foreground_window_keyboard_layout(num)
+    py_win_keyboard_layout.change_foreground_window_keyboard_layout(int(num))
 
 
 

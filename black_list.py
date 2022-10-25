@@ -2,26 +2,34 @@
 # from comands import execute_name
 import time
 
-time
 
 # text = 'друг закрой прогу'
 #
 #
 
-import pyautogui as pg
+# import requests
+#
+# response = requests.get('https://www.youtube.com/')
+# print(response)
 
-while True:
-    post = pg.position()
-    print(post)
-    time.sleep(1)
+
+
+
+
+# import pyautogui as pg
+
+# while True:
+#     post = pg.position()
+#     print(post)
+#     time.sleep(1)
 #Point(x=601, y=132) рпоиска ютуб асположение
 # xy = pg.moveTo(None, None,)
 # print(xy)
 
 
 
-size = pg.size()
-print(size)
+# size = pg.size()
+# print(size)
 
 
 # import ctypes
@@ -35,7 +43,10 @@ print(size)
 #     if hex(pf(0)) == '0x4090409':
 #         return 'en'
 
-
+#
+# print(pg.KEYBOARD_KEYS)
+#
+# pg.press(['volumemute'])
 
 
 # import win32api
