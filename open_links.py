@@ -1,4 +1,3 @@
-import time
 import webbrowser
 from answer_jarvis import answer_jarvis
 import pyautogui as pg
@@ -12,19 +11,24 @@ list_links = {'яндекс': 'https://ya.ru/',
               }
 
 
+def search_str_youtube():
+    webbrowser.open_new_tab("https://www.youtube.com/")
+    answer_jarvis()
+
+
 def open(text):
 
     """ Удаление 1 слова 0 индексом из строки"""
-    s2 = " ".join(text.split()[1:])
-    print('open', s2)
-
-    url = ''
+    name_url = " ".join(text.split()[1:])
+    print('open', name_url)
 
     for k, v in list_links.items():
-        if s2 in k:
-            url = v
+        if name_url in k:
+            if name_url == 'ютуб':
+                search_str_youtube()
+                return
             answer_jarvis()
-            webbrowser.open_new_tab(url)
+            webbrowser.open_new_tab(v)
             return
 
 
@@ -65,7 +69,7 @@ def text_search(text: str):
     print('finished', ','.join(word_list))
     symbol = {'ё': '`', 'й': 'q', 'ц': 'w', 'у': 'e', 'к': 'r', 'е': 't', 'н': 'y', 'г': 'u', 'ш': 'i', 'щ': 'o',
               'з': 'p', 'х': '[', 'ъ': ']', 'ф': 'a', 'ы': 's', 'в': 'd', 'а': 'f', 'п': 'g', 'р': 'h', 'о': 'j',
-              'л': 'k', 'д': 'l', 'ж': ';', 'э': '''''', 'я': 'z', 'ч': 'x', 'с': 'c', 'м': 'v', 'и': 'b', 'т': 'n',
+              'л': 'k', 'д': 'l', 'ж': ';', 'э': "'", 'я': 'z', 'ч': 'x', 'с': 'c', 'м': 'v', 'и': 'b', 'т': 'n',
               'ь': 'm', 'б': ',', 'ю': '.'}
     x = get_layout()
     if x == 'en':

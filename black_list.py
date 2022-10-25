@@ -1,9 +1,28 @@
 # from fuzzywuzzy import fuzz
 # from comands import execute_name
+import time
+
+time
 
 # text = 'друг закрой прогу'
 #
 #
+
+import pyautogui as pg
+
+while True:
+    post = pg.position()
+    print(post)
+    time.sleep(1)
+#Point(x=601, y=132) рпоиска ютуб асположение
+# xy = pg.moveTo(None, None,)
+# print(xy)
+
+
+
+size = pg.size()
+print(size)
+
 
 # import ctypes
 # import py_win_keyboard_layout

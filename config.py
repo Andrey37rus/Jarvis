@@ -87,8 +87,6 @@ commands = {
 }
 
 
-listen = {'listen': 'online'}
-
 
 
 
