@@ -58,6 +58,7 @@ chunk = {
 
 commands = {
     'искать': search_by_internet,
+    'поиск': text_search,
     'ты здесь': i_need,
     'спасибо': thanks,
     'громче': up,
@@ -82,7 +83,7 @@ commands = {
     'я дома': home,
     # 'play': play_music,
     ('купить', 'купи', 'возьми', 'взять', 'позови', 'позвать'): counter_strike,
-    'поиск': text_search,
+
 
 }
 

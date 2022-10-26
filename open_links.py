@@ -7,7 +7,7 @@ import py_win_keyboard_layout
 
 
 list_links = {
-            'https://ya.ru/': ('search/?text=', 'яндекс',  'яндексе'),
+            'https://yandex.ru/': ('search/?text=', 'яндекс',  'яндексе'),
             'https://www.google.ru/': ('search?q=', 'гугл', 'гугле'),
             'https://www.youtube.com/': ('results?search_query=', 'ютуб', 'ютубе')
 
@@ -29,39 +29,38 @@ def open(text):
     print('open', name_url)
 
     for k, v in list_links.items():
-        if name_url in k:
-            if name_url == 'ютуб':
+        if name_url in v:
+            if name_url == 'ютуб' or name_url == 'ютубе':
                 search_str_youtube()
                 return
-            answer_jarvis()
-            webbrowser.open_new_tab(k)
-            return
+            elif name_url == 'яндекс' or name_url == 'яндексе':
+                answer_jarvis()
+                webbrowser.get().open('https://ya.ru/')
+                return
+            elif name_url == 'гугл' or name_url == 'гугле':
+                answer_jarvis()
+                webbrowser.open_new_tab(k)
 
 
 def search_by_internet(text: str):
-
     text = text.split()
     text.remove(text[0])
+
+    for sym in text:
+        if sym == 'в' or sym == 'на':
+            text.remove(sym)
+
     print('ynd:', text)
     for elem in text:
         for k, v in list_links.items():
             if elem in v:
+                text.remove(elem)
+                answer_jarvis()
                 webbrowser.get().open(k + v[0] + ' '.join(text))
                 return
-    # url = "https://yandex.ru/search/?text=" + ' '.join(text)
-    # webbrowser.get().open(url)
-
-
-
-
-
-
-    # answer_jarvis()
-    # search = ''.join(text)
-    # print('поиск в инете', search)
-    # url = "https://yandex.ru/search/?text=" + search
-    # webbrowser.get().open(url)
-    # return
+    answer_jarvis()
+    url = "https://yandex.ru/search/?text=" + ' '.join(text)
+    webbrowser.get().open(url)
 
 
 def get_layout():
@@ -105,13 +104,14 @@ def text_search(text: str):
 
     if x == 'en':
         py_win_keyboard_layout.change_foreground_window_keyboard_layout(0x4190419)
-    i_need()
+
     for elem in word_list:
         if elem == ' ':
             pg.press('space')
         for k, v in symbol.items():
             if elem == k:
                 pg.typewrite(v)
+                time.sleep(0.1)
     pg.press(['enter'])
     py_win_keyboard_layout.change_foreground_window_keyboard_layout(int(num))
 

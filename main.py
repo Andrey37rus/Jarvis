@@ -17,21 +17,20 @@ head = {'head': 'off'}
 
 
 def header(voice: str):
-    text = str(voice).split()
-    name = config.VA_ALIAS
     voice = voice.split()
+    name = config.VA_ALIAS
 
-    for elem in text:
+    for elem in voice:
         if elem in name:
-            if len(text) == 1:
+            if len(voice) == 1:
                 i_need()
                 head['head'] = 'on'
-                del text
+                del voice
                 return
-            elif len(text) > 1:
-                num = elem.index(elem)
-                voice_good = voice.remove(num)
-                off_line(str(voice))
+            elif len(voice) > 1:
+                num = voice.index(elem)
+                voice.pop(num)
+                off_line(' '.join(voice))
                 return
 
     if head['head'] == 'on':
@@ -39,7 +38,7 @@ def header(voice: str):
             del voice
             return
         else:
-            off_line(voice)
+            off_line(' '.join(voice))
 
 
 def off_line(voice):
@@ -56,6 +55,11 @@ def off_line(voice):
     if len(good_text) == 0:
         mistake()
         return
+    # поработать!
+    # elif len(good_text) > 1:
+    #     good_text = good_text[0]
+
+
     commands_dict[' '.join(good_text)] = voice
     func_y(commands_dict)
 
