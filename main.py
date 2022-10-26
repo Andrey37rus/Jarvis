@@ -19,6 +19,7 @@ head = {'head': 'off'}
 def header(voice: str):
     text = str(voice).split()
     name = config.VA_ALIAS
+    voice = voice.split()
 
     for elem in text:
         if elem in name:
@@ -28,7 +29,9 @@ def header(voice: str):
                 del text
                 return
             elif len(text) > 1:
-                off_line(voice.replace(elem, ''))
+                num = elem.index(elem)
+                voice_good = voice.remove(num)
+                off_line(str(voice))
                 return
 
     if head['head'] == 'on':

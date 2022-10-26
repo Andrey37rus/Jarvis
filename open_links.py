@@ -6,16 +6,17 @@ import ctypes
 import py_win_keyboard_layout
 
 
-list_links = {'яндекс': 'https://ya.ru/',
-              'гугл': 'https://www.google.ru/',
-              'ютуб': 'https://www.youtube.com/',
-              'вконтакте': 'https://vk.com/feed',
-              }
+list_links = {
+            'https://ya.ru/': ('search/?text=', 'яндекс',  'яндексе'),
+            'https://www.google.ru/': ('search?q=', 'гугл', 'гугле'),
+            'https://www.youtube.com/': ('results?search_query=', 'ютуб', 'ютубе')
+
+}
 
 
 def search_str_youtube():
     webbrowser.open_new_tab("https://www.youtube.com/")
-
+    i_need()
     time.sleep(2)
     for i in range(4):
         pg.press(['tab'])
@@ -33,17 +34,34 @@ def open(text):
                 search_str_youtube()
                 return
             answer_jarvis()
-            webbrowser.open_new_tab(v)
+            webbrowser.open_new_tab(k)
             return
 
 
-def search_by_internet(text):
-    answer_jarvis()
-    search = ''.join(text)
-    print('поиск в инете', search)
-    url = "https://yandex.ru/search/?text=" + search
-    webbrowser.get().open(url)
-    return
+def search_by_internet(text: str):
+
+    text = text.split()
+    text.remove(text[0])
+    print('ynd:', text)
+    for elem in text:
+        for k, v in list_links.items():
+            if elem in v:
+                webbrowser.get().open(k + v[0] + ' '.join(text))
+                return
+    # url = "https://yandex.ru/search/?text=" + ' '.join(text)
+    # webbrowser.get().open(url)
+
+
+
+
+
+
+    # answer_jarvis()
+    # search = ''.join(text)
+    # print('поиск в инете', search)
+    # url = "https://yandex.ru/search/?text=" + search
+    # webbrowser.get().open(url)
+    # return
 
 
 def get_layout():
