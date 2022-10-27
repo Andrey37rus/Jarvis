@@ -13,7 +13,7 @@ from fuzzywuzzy import fuzz
 
 print(f"{config.VA_NAME} (v{config.VA_VER}) начал свою работу ...")
 
-head = {'head': 'off'}
+head = {'head': 'off', 'foot': 'off'}
 
 
 def header(voice: str):
@@ -55,152 +55,32 @@ def off_line(voice):
     if len(good_text) == 0:
         mistake()
         return
-    # поработать!
-    # elif len(good_text) > 1:
-    #     good_text = good_text[0]
-
-
     commands_dict[' '.join(good_text)] = voice
     func_y(commands_dict)
 
 
-    # for elem in text:
-    #     for k, v in config.chunk.items():
-    #         if elem in v:
-    #             good_text.append(k)
-    #             for word in good_text:
-    #                 if word in config.words_arguments or word in config.words_arguments_web:
-    #                     print(elem)
-    #                     good_text = ''.join(good_text)
-    #                     text = ' '.join(text)
-    #                     text = text.replace(elem, '')
-    #                     commands_dict[good_text] = text
-    #                     argument(commands_dict)
-    #
-    # if len(good_text) == 0:
-    #     playsound(os.path.join('music_jar', 'mistake.wav'))
-    #     print("Command not found")
-    #     return
-    # good_text = ' '.join(good_text)
-    # commands_dict['good_text'] = good_text
-    # func_y(commands_dict)
-
-
-# def off_line(voice: str):
-#     log_voice(voice)
-#     text = voice.split()
-#     good_text = list()
-#     commands_dict = dict()
-#     head['head'] = 'off'
-#
-#     for elem in text:
-#         for k, v in config.chunk.items():
-#             if elem in v:
-#                 good_text.append(k)
-#     if len(good_text) == 0:
-#         playsound(os.path.join('music_jar', 'mistake.wav'))
-#         print("Command not found")
-#         return
-#     for elem in good_text:
-#         if elem in config.words_arguments or elem in config.words_arguments_web:
-#             print(elem)
-#             good_text = ''.join(good_text)
-#             text = ' '.join(text)
-#             commands_dict[good_text] = text
-#             argument(commands_dict)
-#     else:
-#         good_text = ' '.join(good_text)
-#         commands_dict['good_text'] = good_text
-#         func_y(commands_dict)
-
-#
-# def argument(text: dict):
-#     text = text
-#     commands_list = list()
-#
-#     values = text.values()
-#     values = ' '.join(values)
-#     values = values.split()
-#     try:
-#         if 'запустить' in text:
-#             argument_list = show_list_programms.list_chunk()
-#
-#             for elem in values:
-#                 for k, v in argument_list.items():
-#                     if elem in v:
-#                         commands_list.append(k)
-#             commands_list = ' '.join(commands_list)
-#             text['запустить'] = commands_list
-#             func_y(text)
-#
-#         # elif 'выключить' in text:
-#         #         values = text.values()
-#         #         values = ' '.join(values)
-#         #         values = values.split()
-#         #
-#         #         for elem in values:
-#         #             for k, v in argument_list.items():
-#         #                 if elem in v:
-#         #                     commands_list.append(k)
-#         #         commands_list = ' '.join(commands_list)
-#         #         text['выключить'] = commands_list
-#         #         func_y(text)
-#
-#         elif 'искать' in text:
-#             values_search = values[2:]
-#             values_search = ' '.join(values_search)
-#             text['искать'] = values_search
-#             print('text', text)
-#             func_y(text)
-#
-#         elif 'поиск' in text:
-#             # values_search = values[2:]
-#             # values_search = ' '.join(values_search)
-#             values = ' '.join(values)
-#             text['поиск'] = values
-#             print('text', text)
-#             func_y(text)
-#
-#         elif 'открыть' in text:
-#             argument_list_links = open_links.list_links
-#             for elem in values:
-#                 for k, v in argument_list_links.items():
-#                     if elem in k:
-#                         commands_list.append(k)
-#                         commands_list = ' '.join(commands_list)
-#                         text['открыть'] = commands_list
-#                         func_y(text)
-#                         return
-#             else:
-#                 playsound(os.path.join('music_jar', 'mistake.wav'))
-#                 print('нет ссылки')
-#
-#         elif 'закрыть' in text:
-#             argument_list = show_list_programms.list_chunk()
-#             for elem in values:
-#                 for k, v in argument_list.items():
-#                     if elem in v:
-#                         commands_list.append(k)
-#             commands_list = ' '.join(commands_list)
-#             text['закрыть'] = commands_list
-#             func_y(text)
-#     except AttributeError:
-#         AttributeError()
-
-
 def func_y(text: dict):
-    text = text
     keys_keys = ' '.join(text.keys())
     values_values = ' '.join(text.values())
+    func_b(keys_keys, values_values)
+
+
+def func_b(keys_keys, values_values):
 
     for k, v in config.commands.items():
-        if k == keys_keys:
-            config.commands[k](values_values)
-            return
-    else:
+        fuzzz = fuzz.token_sort_ratio(keys_keys, k)
+        if fuzzz == 100:
+            keys = k
+            if keys == k:
+                config.commands[keys](values_values)
+                head['foot'] = 'off'
+                return
+    if head['foot'] == 'on':
+        head['foot'] = 'off'
         mistake()
         return
 
+    slise(keys_keys, values_values)
 
 
     # if keys_keys in config.words_arguments or keys_keys in config.words_arguments_web:
@@ -229,6 +109,12 @@ def func_y(text: dict):
     #                 print("Command not found")
     #                 return
     #
+def slise(keys_keys, values_values):
+    head['foot'] = 'on'
+    keys_keys = keys_keys.split()
+    keys_keys = keys_keys[:1]
+    keys_keys = ' '.join(keys_keys)
+    func_b(keys_keys, values_values)
 
 
 def log_voice(text: str):

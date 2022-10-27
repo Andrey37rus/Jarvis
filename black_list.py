@@ -43,9 +43,12 @@ import time
 #     if hex(pf(0)) == '0x4090409':
 #         return 'en'
 
-#
-# print(pg.KEYBOARD_KEYS)
-#
+import pyautogui as pg
+
+print(pg.KEYBOARD_KEYS)
+
+
+
 # pg.press(['volumemute'])
 
 

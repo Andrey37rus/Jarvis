@@ -6,7 +6,7 @@ from show_list_programms import list_programs
 from clear_list_programms import clear
 from adding_programms import add_program
 from counter_strike_go import counter_strike
-from reproduction import up, down, soundless, sound
+from reproduction import up, down, soundless, next_trak, previous_track, play
 from open_links import open, search_by_internet, text_search
 
 
@@ -41,13 +41,13 @@ chunk = {
     'развернуть': ('развернуть', 'развернул', 'разворачивай', 'развернутый', 'разверни'),
     'купить': ('купить', 'купи', 'закупи', 'покупай'),
     'play': ('play', 'плэй', 'стоп', 'stop'),
-    'громче': ('громче', 'громко', 'погромче'),
+    'громче': ('громче', 'громко', 'погромче', 'по громче'),
     'тихо': ('тихо', 'тише', 'потише'),
     'следующий': ('следующий', 'следую', 'следовать', 'следущий'),
     'трек': ('трек', 'трэк', 'трак', 'трект'),
     'предыдущий': ('предыдущий', 'преудущий', '', ''),
     'спасибо': ('спасибо', 'спасиба', 'благодарю', 'блогодаря', 'спасибки', 'спасибочки'),
-    'ты': ('ты', 'тот', 'та', 'то'),
+    'ты': ('ты', 'тот', 'та', 'то', 'тебя'),
     'здесь': ('здесь', 'здеся', 'сдесь'),
     'звук': ('звук', 'звуки', 'звонк', 'звонкий', 'звонок', 'звука'),
     'без': ('без', 'бес', ''),
@@ -64,9 +64,9 @@ commands = {
     'громче': up,
     'тихо': down,
     'без звук': soundless,
-    'звук': sound,
-    # 'следующий трек': next_trak,
-    # 'предыдущий трек': previous_track,
+    'звук': soundless,
+    'следующий трек': next_trak,
+    'предыдущий трек': previous_track,
     'открыть': open,
     'запустить': run_programs,
     'добавить программа': add_program,
@@ -81,7 +81,7 @@ commands = {
     'свернуть': show_minimize,
     'развернуть': show_window,
     'я дома': home,
-    # 'play': play_music,
+    'play': play,
     ('купить', 'купи', 'возьми', 'взять', 'позови', 'позвать'): counter_strike,
 
 
