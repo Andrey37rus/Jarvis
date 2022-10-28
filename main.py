@@ -72,8 +72,8 @@ def func_b(keys_keys, values_values):
         if fuzzz == 100:
             keys = k
             if keys == k:
-                config.commands[keys](values_values)
                 head['foot'] = 'off'
+                config.commands[keys](values_values)
                 return
     if head['foot'] == 'on':
         head['foot'] = 'off'
@@ -83,32 +83,6 @@ def func_b(keys_keys, values_values):
     slise(keys_keys, values_values)
 
 
-    # if keys_keys in config.words_arguments or keys_keys in config.words_arguments_web:
-    #     for key in config.commands.keys():
-    #         fuzzz = fuzz.token_sort_ratio(keys_keys, key)
-    #         if fuzzz == 100:
-    #             keys = key
-    #             if keys in key:
-    #                 config.commands[key](text.values())
-    #                 break
-    #             else:
-    #                 playsound(os.path.join('music_jar', 'mistake.wav'))
-    #                 print("Command not found")
-    #                 return
-
-    # elif keys_keys == 'good_text':
-    #     for key in config.commands.keys():
-    #         fuzzz = fuzz.token_sort_ratio(values_values, key)
-    #         if fuzzz == 100:
-    #             values = key
-    #             if values in key:
-    #                 config.commands[key]()
-    #                 break
-    #             else:
-    #                 playsound(os.path.join('music_jar', 'mistake.wav'))
-    #                 print("Command not found")
-    #                 return
-    #
 def slise(keys_keys, values_values):
     head['foot'] = 'on'
     keys_keys = keys_keys.split()
