@@ -1,4 +1,3 @@
-import pyautogui
 import pyautogui as pg
 
 
@@ -38,6 +37,4 @@ def play(*args):
     pg.press(['playpause'])
     pass
 
-def stop(*args):
-    pass
 

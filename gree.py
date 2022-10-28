@@ -45,6 +45,6 @@ def off_comp(*args):
     return
 
 
-def yes_ser():
+def yes_ser(*args):
     playsound(os.path.join('music_jar', 'eat.wav'))
     return

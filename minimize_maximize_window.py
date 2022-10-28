@@ -31,7 +31,6 @@ def show_window(*args):
             break
 
 
-
 def show_minimize(*args):
     """Свернуть программу"""
 

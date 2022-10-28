@@ -5,7 +5,6 @@ from open_close_program import run_programs, close_program
 from show_list_programms import list_programs
 from clear_list_programms import clear
 from adding_programms import add_program
-from counter_strike_go import counter_strike
 from reproduction import up, down, soundless, next_trak, previous_track, play
 from open_links import open, search_by_internet, text_search
 
@@ -82,9 +81,6 @@ commands = {
     'развернуть': show_window,
     'я дома': home,
     'play': play,
-    ('купить', 'купи', 'возьми', 'взять', 'позови', 'позвать'): counter_strike,
-
-
 }
 
 
