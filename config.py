@@ -1,6 +1,6 @@
 from turn_off_restart_sleep import shutdown, sleep_mode, restart
 from gree import home, good_days, thanks, i_need
-from minimize_maximize_window import show_window, show_minimize
+from minimize_maximize_window import show_minimize, show_window
 from open_close_program import run_programs, close_program
 from show_list_programms import list_programs
 from clear_list_programms import clear
@@ -36,7 +36,7 @@ chunk = {
     'спящий': ('спящий', 'спящой'),
     'режим': ('режим', 'режим'),
     'закрыть': ('закрыть', 'закрыто', 'закрой', 'закрыл', 'закрыла', 'закрою'),
-    'свернуть': ('свернуть', 'свернул', 'свёрнутый', 'сверни', 'свернулось', ''),
+    'свернуть': ('свернуть', 'свернул', 'свёрнутый', 'сверни', 'свернулось', 'севернее'),
     'развернуть': ('развернуть', 'развернул', 'разворачивай', 'развернутый', 'разверни'),
     'купить': ('купить', 'купи', 'закупи', 'покупай'),
     'play': ('play', 'плэй', 'стоп', 'stop'),

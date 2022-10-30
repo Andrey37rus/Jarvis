@@ -12,9 +12,116 @@ import time
 # response = requests.get('https://www.youtube.com/')
 # print(response)
 
+import win32gui
+import win32con
+#
+# win32gui.ShowWindow(328626, win32con.SW_MINIMIZE)
+#
+# from win32gui import GetWindowText, GetForegroundWindow
+# count = 0
+# while True:
+#     if count == 10:
+#         break
+#     def windowEnumHandler(hwnd, top_windows):
+#         top_windows.append((hwnd, win32gui.GetWindowText(hwnd)))
+#
+#     def bringToFront(window_name):
+#         top_windows = []
+#
+#         win32gui.EnumWindows(windowEnumHandler, top_windows)
+#             # for num, elem in enumerate(top_windows):
+#             #     print('elem:', num + 1, ':', elem)
+#         for i in top_windows:
+#             if i[1] == window_name:
+#                 print('activ-win', i)
+#                 # win32gui.ShowWindow(i[0], win32con.SW_MINIMIZE)
+#     time.sleep(2)
+#
+#     activate = GetWindowText(GetForegroundWindow())
+#
+#     print('активное окно название', activate)
+#
+#     bringToFront(activate)
 
 
 
+
+    # top_windows = []
+    # win32gui.EnumWindows(windowEnumHandler, top_windows)
+    # for num, elem in enumerate(top_windows):
+    #     print('elem:', num + 1, ':', elem)
+
+
+                    # if window_name.lower() in i[1].lower() and 'gdi+' not in i[1].lower():
+                    #     win32gui.ShowWindow(i[0], win32con.SW_SHOWNORMAL)
+                    #     win32gui.SetForegroundWindow(i[0])
+                    #     break
+
+
+#
+# def windowEnumHandler(hwnd, top_windows):
+#     top_windows.append((hwnd, win32gui.GetWindowText(hwnd)))
+#
+#
+# def bringToFront(window_name):
+#     top_windows = []
+#
+#     win32gui.EnumWindows(windowEnumHandler, top_windows)
+#     for num, elem in enumerate(top_windows):
+#         print('elem:', num + 1, ':', elem)
+#     for i in top_windows:
+#         if window_name.lower() in i[1].lower() and 'gdi+' not in i[1].lower():
+#             win32gui.ShowWindow(i[0], win32con.SW_SHOWNORMAL)
+#             win32gui.SetForegroundWindow(i[0])
+#             break
+
+# new_name = 'AIMP.exe'
+#
+# bringToFront(new_name)
+
+
+def activate_win(*args):
+
+    hwnd = int
+    activ_win_icon = list()
+    activ_win_icon.append((hwnd, win32gui.GetWindowText(hwnd)))
+
+
+def windowEnumHandler(hwnd, top_windows):
+    top_windows.append((hwnd, win32gui.GetWindowText(hwnd)))
+
+
+top_windows = []
+win32gui.EnumWindows(windowEnumHandler, top_windows)
+
+for num, elem in enumerate(top_windows):
+    print('elem:', num + 1, ':', elem)
+
+for i in top_windows:
+    print('id:', i[0])
+
+import psutil
+import ctypes
+from ctypes import wintypes
+
+# pid = wintypes.DWORD()
+# active = ctypes.windll.user32.GetForegroundWindow()
+# active_window = ctypes.windll.user32.GetWindowThreadProcessId(active, ctypes.byref(pid))
+#
+# pid = pid.value
+# for item in psutil.process_iter():
+#     if pid == item.pid:
+#         print(item.name())
+#         win32gui.ShowWindow(328626, win32con.SW_MINIMIZE)
+
+
+# import ctypes
+# from ctypes import wintypes
+#
+# pid = wintypes.DWORD()
+# active = ctypes.windll.user32.GetForegroundWindow()
+# active_window = ctypes.windll.user32.GetWindowThreadProcessId(active, ctypes.byref(pid))
+# print('id activate window:', active_window)
 
 # import pyautogui as pg
 
@@ -45,7 +152,7 @@ import time
 
 import pyautogui as pg
 
-print(pg.KEYBOARD_KEYS)
+# print(pg.KEYBOARD_KEYS)
 
 
 

@@ -25,7 +25,6 @@ def run_programs(name: str):
                     path = name_path_program[key]
                     answer_jarvis()
                     subprocess.Popen(str(path))
-                    # os.startfile(str(path))
                     return
             print('нет файла или пути больше не существует')
         else:
@@ -60,7 +59,6 @@ def close_program(name: str):
                     new_name = new_name[::-1]
                     print(new_name)
                     subprocess.call("taskkill /f /im {app}".format(app=new_name))
-                    # os.system("TASK-KILL /F /IM {app}".format(app=new_name))
                     answer_jarvis()
                     return
             else:
