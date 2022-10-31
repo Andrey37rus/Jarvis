@@ -2,7 +2,8 @@ import win32gui
 import win32con
 from win32gui import GetWindowText, GetForegroundWindow
 from gree import yes_ser
-activ_win_icon = []
+import ctypes
+
 
 # def show_minimize(*args):
 #     """Свернуть программу"""
@@ -29,6 +30,25 @@ activ_win_icon = []
 
 # def activate_windows():
 #     activ_win_icon.append((hwnd, win32gui.GetWindowText(hwnd)))
+
+activ_win_icon = []
+
+
+#-8 -8 1928 1048
+#1921 1045
+
+# def getWindow_W_H(hwnd):
+#     # Получить размер целевого окна
+#     left, top, right, bot = win32gui.GetWindowRect(hwnd)
+#     print(left, top, right, bot)
+#     width = right - left - 15
+#     height = bot - top - 11
+#     print(width, height)
+#     return (left, top, width, height)
+#
+#
+# hWnd = ctypes.windll.user32.GetForegroundWindow()
+# getWindow_W_H(hWnd)
 
 
 def show_minimize(*args):
@@ -59,10 +79,10 @@ def show_window(*args):
     if len(activ_win_icon) == 0:
         print('нет всписке свернутых программ')
         return
-
+    # act = 1921, 1045
     print(activ_win_icon)
     for elem in activ_win_icon[::-1]:
-        win32gui.ShowWindow(elem, win32con.SHOW_FULLSCREEN)
+        win32gui.ShowWindow(elem, win32con.SW_RESTORE)
         win32gui.SetForegroundWindow(elem)
         yes_ser()
         activ_win_icon.remove(elem)

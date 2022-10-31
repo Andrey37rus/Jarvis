@@ -78,27 +78,54 @@ import win32con
 # new_name = 'AIMP.exe'
 #
 # bringToFront(new_name)
+from ctypes import *
+import ctypes
+# for i in range(10):
+#     hWnd = ctypes.windll.user32.GetForegroundWindow()
+#     print('ключ:', hWnd)
+#     time.sleep(3)
 
 
-def activate_win(*args):
+# from win32gui import GetWindowText, GetForegroundWindow
+# print(GetWindowText(GetForegroundWindow()))
 
-    hwnd = int
-    activ_win_icon = list()
-    activ_win_icon.append((hwnd, win32gui.GetWindowText(hwnd)))
+def getWindow_W_H(hwnd):
+    # Получить размер целевого окна
+    left, top, right, bot = win32gui.GetWindowRect(hwnd)
+    print(left, top, right, bot)
+    width = right - left - 15
+    height = bot - top - 11
+    print(width, height)
+    return (left, top, width, height)
 
 
-def windowEnumHandler(hwnd, top_windows):
-    top_windows.append((hwnd, win32gui.GetWindowText(hwnd)))
+hWnd = ctypes.windll.user32.GetForegroundWindow()
+getWindow_W_H(hWnd)
 
+# def getWindow_Img(hwnd):
+#     # Замените hwnd на WindowLong
+#     s = win32gui.GetWindowLong(hwnd, win32con.GWL_EXSTYLE)
+#     win32gui.SetWindowLong(hwnd, win32con.GWL_EXSTYLE, s|win32con.WS_EX_LAYERED)
 
-top_windows = []
-win32gui.EnumWindows(windowEnumHandler, top_windows)
-
-for num, elem in enumerate(top_windows):
-    print('elem:', num + 1, ':', elem)
-
-for i in top_windows:
-    print('id:', i[0])
+# def activate_win(*args):
+#
+#     hwnd = int
+#     activ_win_icon = list()
+#     activ_win_icon.append((hwnd, win32gui.GetWindowText(hwnd)))
+#
+#
+# def windowEnumHandler(hwnd, top_windows):
+#     top_windows.append((hwnd, win32gui.GetWindowText(hwnd)))
+#
+#
+# top_windows = []
+# win32gui.EnumWindows(windowEnumHandler, top_windows)
+#
+# for num, elem in enumerate(top_windows):
+#     print('elem:', num + 1, ':', elem)
+#
+# for i in top_windows:
+#     print('id:', i[0])
 
 import psutil
 import ctypes
