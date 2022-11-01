@@ -1,21 +1,56 @@
+from win32ctypes.core import ctypes
+
 from gree import yes_ser, off_comp
 import os
+import ctypes
+import win32security
+import win32api
+from ntsecuritycon import *
+
+
+def AdjustPrivilege(priv, enable=1):
+    # Get the process token
+    flags = TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY
+    htoken = win32security.OpenProcessToken(win32api.GetCurrentProcess(), flags)
+    # Get the ID for the system shutdown privilege.
+    idd = win32security.LookupPrivilegeValue(None, priv)
+    # Now obtain the privilege for this process.
+    # Create a list of the privileges to be added.
+    if enable:
+        newPrivileges = [(idd, SE_PRIVILEGE_ENABLED)]
+    else:
+        newPrivileges = [(idd, 0)]
+    # and make the adjustment
+    win32security.AdjustTokenPrivileges(htoken, 0, newPrivileges)
 
 
 def shutdown(*args):
     """Завершение работы"""
     off_comp()
-    os.system("shutdown /s /t 1")
-    # subprocess.run(["shutdown", "-s"])
+    AdjustPrivilege(SE_SHUTDOWN_NAME)
+    user32 = ctypes.WinDLL('user32')
+    user32.ExitWindowsEx(0x00000008, 0x00000000)
 
 
 def restart(*args):
     """Перезагрузка системы"""
     off_comp()
-    os.system("shutdown /r /t 1")
+    AdjustPrivilege(SE_SHUTDOWN_NAME)
+    user32 = ctypes.WinDLL('user32')
+    user32.ExitWindowsEx(0x00000002, 0x00000000)
 
 
 def sleep_mode(*args):
     """Спящий режим"""
     yes_ser()
-    os.system("rundll32.exe powrprof.dll,SetSuspendState 0,1,0")
+    AdjustPrivilege(SE_SHUTDOWN_NAME)
+    win32api.SetSystemPowerState(True, True)
+
+
+def hibernation(*args):
+    """Режим гибернации
+    Нужен чтоб полностью обесточить комп но в оперативной памяти оставить все запущенные процессы
+    """
+    yes_ser()
+    AdjustPrivilege(SE_SHUTDOWN_NAME)
+    win32api.SetSystemPowerState(False, True)

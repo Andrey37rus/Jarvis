@@ -88,19 +88,19 @@ import ctypes
 
 # from win32gui import GetWindowText, GetForegroundWindow
 # print(GetWindowText(GetForegroundWindow()))
-
-def getWindow_W_H(hwnd):
-    # Получить размер целевого окна
-    left, top, right, bot = win32gui.GetWindowRect(hwnd)
-    print(left, top, right, bot)
-    width = right - left - 15
-    height = bot - top - 11
-    print(width, height)
-    return (left, top, width, height)
-
-
-hWnd = ctypes.windll.user32.GetForegroundWindow()
-getWindow_W_H(hWnd)
+#
+# def getWindow_W_H(hwnd):
+#     # Получить размер целевого окна
+#     left, top, right, bot = win32gui.GetWindowRect(hwnd)
+#     print(left, top, right, bot)
+#     width = right - left - 15
+#     height = bot - top - 11
+#     print(width, height)
+#     return (left, top, width, height)
+#
+#
+# hWnd = ctypes.windll.user32.GetForegroundWindow()
+# getWindow_W_H(hWnd)
 
 # def getWindow_Img(hwnd):
 #     # Замените hwnd на WindowLong
@@ -127,8 +127,8 @@ getWindow_W_H(hWnd)
 # for i in top_windows:
 #     print('id:', i[0])
 
-import psutil
-import ctypes
+# import psutil
+# import ctypes
 from ctypes import wintypes
 
 # pid = wintypes.DWORD()
@@ -141,6 +141,53 @@ from ctypes import wintypes
 #         print(item.name())
 #         win32gui.ShowWindow(328626, win32con.SW_MINIMIZE)
 
+import win32security
+import win32api
+import sys
+import time
+from ntsecuritycon import *
+
+#
+# def AdjustPrivilege(priv, enable=1):
+#     # Get the process token
+#     flags = TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY
+#     htoken = win32security.OpenProcessToken(win32api.GetCurrentProcess(), flags)
+#     # Get the ID for the system shutdown privilege.
+#     idd = win32security.LookupPrivilegeValue(None, priv)
+#     # Now obtain the privilege for this process.
+#     # Create a list of the privileges to be added.
+#     if enable:
+#         newPrivileges = [(idd, SE_PRIVILEGE_ENABLED)]
+#     else:
+#         newPrivileges = [(idd, 0)]
+#     # and make the adjustment
+#     win32security.AdjustTokenPrivileges(htoken, 0, newPrivileges)
+
+#
+# def RebootServer(user=None,message='Rebooting', timeout=30, bForce=0, bReboot=1):
+#     AdjustPrivilege(SE_SHUTDOWN_NAME)
+#     try:
+#         win32api.InitiateSystemShutdown(user, message, timeout, bForce, bReboot)
+#     finally:
+#         # Now we remove the privilege we just added.
+#         AdjustPrivilege(SE_SHUTDOWN_NAME, 0)
+#
+# def AbortReboot():
+#     AdjustPrivilege(SE_SHUTDOWN_NAME)
+#     try:
+#         win32api.AbortSystemShutdown(None)
+#     finally:
+#         AdjustPrivilege(SE_SHUTDOWN_NAME, 0)
+
+#
+# AdjustPrivilege(SE_SHUTDOWN_NAME)
+
+
+# AdjustPrivilege(SE_SHUTDOWN_NAME)
+# win32api.SetSystemPowerState(True, True) # спящий режим
+
+# win32api.SetSystemPowerState(False, True) # кибернация
+# AbortReboot()
 
 # import ctypes
 # from ctypes import wintypes

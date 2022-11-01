@@ -1,9 +1,8 @@
-from turn_off_restart_sleep import shutdown, sleep_mode, restart
+from turn_off_restart_sleep import shutdown, sleep_mode, restart, hibernation
 from gree import home, good_days, thanks, i_need
 from minimize_maximize_window import show_minimize, show_window
 from open_close_program import run_programs, close_program
 from show_list_programms import list_programs
-from clear_list_programms import clear
 from adding_programms import add_program
 from reproduction import up, down, soundless, next_trak, previous_track, play
 from open_links import open, search_by_internet, text_search
@@ -51,7 +50,8 @@ chunk = {
     'звук': ('звук', 'звуки', 'звонк', 'звонкий', 'звонок', 'звука'),
     'без': ('без', 'бес', ''),
     'искать': ('искать', 'ищу', 'ищи', 'найди', 'найти'),
-    'поиск': ('поиск', 'поискать', '')
+    'поиск': ('поиск', 'поискать', ''),
+    'кибернация': ('кибернация', 'кибернацию', 'кибернации')
     }
 
 
@@ -71,9 +71,10 @@ commands = {
     'добавить программа': add_program,
     'выключить компьютер': shutdown,
     'доброе утро': good_days,
-    'протокол чистый лист': clear,
+    # 'протокол чистый лист':
     'перезагрузить компьютер': restart,
     'спящий режим': sleep_mode,
+    'режим кибернация': hibernation,
     'закрыть': close_program,
     'выключить': close_program,
     'список программа': list_programs,

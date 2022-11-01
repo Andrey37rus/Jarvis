@@ -13,7 +13,6 @@ device = 1
 q = queue.Queue()
 
 
-
 def q_callback(indata, frames, time, status):
     # if status:
     #     print(status, file=sys.stderr)

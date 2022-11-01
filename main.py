@@ -9,7 +9,7 @@ import stt
 import os
 from gree import i_need, mistake
 from fuzzywuzzy import fuzz
-# from minimize_maximize_window import activate_windows
+
 
 print(f"{config.VA_NAME} (v{config.VA_VER}) начал свою работу ...")
 
@@ -17,7 +17,6 @@ head = {'head': 'off', 'foot': 'off', 'activ': 'on'}
 
 
 def header(voice: str):
-    # activate_windows()
     voice = voice.split()
     name = config.VA_ALIAS
 
