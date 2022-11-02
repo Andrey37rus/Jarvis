@@ -31,6 +31,7 @@ def header(voice: str):
                 num = voice.index(elem)
                 voice.pop(num)
                 off_line(' '.join(voice))
+                del voice
                 return
 
     if head['head'] == 'on':
@@ -39,10 +40,12 @@ def header(voice: str):
             return
         else:
             off_line(' '.join(voice))
+            del voice
+
 
 
 def off_line(voice):
-    log_voice(voice)
+    # log_voice(voice)
     good_text = list()
     commands_dict = dict()
     head['head'] = 'off'
@@ -54,9 +57,12 @@ def off_line(voice):
                 break
     if len(good_text) == 0:
         mistake()
+        del good_text
         return
     commands_dict[' '.join(good_text)] = voice
     func_y(commands_dict)
+    del commands_dict
+    return
 
 
 def func_y(text: dict):
@@ -74,12 +80,12 @@ def func_b(keys_keys, values_values):
             if keys == k:
                 head['foot'] = 'off'
                 config.commands[keys](values_values)
+                del keys_keys, values_values,
                 return
     if head['foot'] == 'on':
         head['foot'] = 'off'
         mistake()
         return
-
     slise(keys_keys, values_values)
 
 
