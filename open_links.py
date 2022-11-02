@@ -26,7 +26,7 @@ def open(text):
 
     """ Удаление 1 слова 0 индексом из строки"""
     name_url = " ".join(text.split()[1:])
-    print('open', name_url)
+    print('open_link', name_url)
 
     for k, v in list_links.items():
         if name_url in v:

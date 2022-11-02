@@ -8,25 +8,29 @@ from gree import thanks
 
 def run_programs(name: str):
     """Запуск программ"""
+    name = name.split()
+    # print('open app:', name)
+    # print(type(name))
+    #
+    # name = name.split()[1:]
+    #
+    # print(name)
+    # name = ' '.join(name).lower()
 
-    print('open app:', name)
-    print(type(name))
-
-    name = name.split()[1:]
-    print(name)
-    name = ' '.join(name).lower()
 
     if len(name) != 0:
         if os.path.isfile("name_path_program.json"):
             with open('name_path_program.json', 'r') as file:
                 name_path_program = json.load(file)
-            for key in name_path_program.keys():
-                if name in key:
-                    path = name_path_program[key]
-                    answer_jarvis()
-                    subprocess.Popen(str(path))
-                    return
-            print('нет файла или пути больше не существует')
+                for elem in name:
+                    for key in name_path_program.keys():
+                        if elem in key:
+                            path = name_path_program[key]
+                            answer_jarvis()
+                            subprocess.Popen(str(path))
+                            return
+                print('нет файла или пути больше не существует')
+                mistake()
         else:
             mistake()
             print('Нет файла!\n'
