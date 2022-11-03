@@ -22,14 +22,17 @@ def q_callback(indata, frames, time, status):
 def va_listen(callback):
     with sd.RawInputStream(samplerate=samplerate, blocksize=8000, device=device, dtype='int16',
                            channels=1, callback=q_callback):
+        try:
+            rec = vosk.KaldiRecognizer(model, samplerate)
+            while True:
+                data = q.get()
+                if rec.AcceptWaveform(data):
+                    callback(json.loads(rec.Result())["text"])
 
-        rec = vosk.KaldiRecognizer(model, samplerate)
-        while True:
-            data = q.get()
-            if rec.AcceptWaveform(data):
-                callback(json.loads(rec.Result())["text"])
-            # else:
-            #    print(rec.PartialResult())
-
-
+                # else:
+                #    print(rec.PartialResult())
+        except:
+            Exception()
+        finally:
+            va_listen(callback)
 

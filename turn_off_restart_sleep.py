@@ -26,31 +26,46 @@ def AdjustPrivilege(priv, enable=1):
 
 def shutdown(*args):
     """Завершение работы"""
-    off_comp()
-    AdjustPrivilege(SE_SHUTDOWN_NAME)
-    user32 = ctypes.WinDLL('user32')
-    user32.ExitWindowsEx(0x00000008, 0x00000000)
+    try:
+        off_comp()
+        AdjustPrivilege(SE_SHUTDOWN_NAME)
+        user32 = ctypes.WinDLL('user32')
+        user32.ExitWindowsEx(0x00000008, 0x00000000)
+        return
+    except:
+        Exception()
 
 
 def restart(*args):
     """Перезагрузка системы"""
-    off_comp()
-    AdjustPrivilege(SE_SHUTDOWN_NAME)
-    user32 = ctypes.WinDLL('user32')
-    user32.ExitWindowsEx(0x00000002, 0x00000000)
+    try:
+        off_comp()
+        AdjustPrivilege(SE_SHUTDOWN_NAME)
+        user32 = ctypes.WinDLL('user32')
+        user32.ExitWindowsEx(0x00000002, 0x00000000)
+        return
+    except:
+        Exception()
 
 
 def sleep_mode(*args):
     """Спящий режим"""
-    yes_ser()
-    AdjustPrivilege(SE_SHUTDOWN_NAME)
-    win32api.SetSystemPowerState(True, True)
+    try:
+        yes_ser()
+        AdjustPrivilege(SE_SHUTDOWN_NAME)
+        win32api.SetSystemPowerState(True, True)
+        return
+    except:
+        Exception()
 
 
 def hibernation(*args):
     """Режим гибернации
     Нужен чтоб полностью обесточить комп но в оперативной памяти оставить все запущенные процессы
     """
-    yes_ser()
-    AdjustPrivilege(SE_SHUTDOWN_NAME)
-    win32api.SetSystemPowerState(False, True)
+    try:
+        yes_ser()
+        AdjustPrivilege(SE_SHUTDOWN_NAME)
+        win32api.SetSystemPowerState(False, True)
+    except:
+        Exception()

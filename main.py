@@ -19,29 +19,31 @@ head = {'head': 'off', 'foot': 'off', 'activ': 'on'}
 def header(voice: str):
     voice = voice.split()
     name = config.VA_ALIAS
+    try:
+        for elem in voice:
+            if elem in name:
+                if len(voice) == 1:
+                    i_need()
+                    head['head'] = 'on'
+                    del voice
+                    return
+                elif len(voice) > 1:
+                    num = voice.index(elem)
+                    voice.pop(num)
+                    off_line(' '.join(voice))
+                    del voice
+                    return
 
-    for elem in voice:
-        if elem in name:
-            if len(voice) == 1:
-                i_need()
-                head['head'] = 'on'
+        if head['head'] == 'on':
+            if len(voice) == 0:
                 del voice
                 return
-            elif len(voice) > 1:
-                num = voice.index(elem)
-                voice.pop(num)
+            else:
                 off_line(' '.join(voice))
                 del voice
                 return
-
-    if head['head'] == 'on':
-        if len(voice) == 0:
-            del voice
-            return
-        else:
-            off_line(' '.join(voice))
-            del voice
-
+    except:
+        Exception()
 
 
 def off_line(voice):
