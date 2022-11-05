@@ -35,7 +35,6 @@ def show_window(*args):
     if len(activ_win_icon) == 0:
         print('нет всписке свернутых программ')
         return
-    print(activ_win_icon)
     for elem in activ_win_icon[::-1]:
         win32gui.ShowWindow(elem, win32con.SW_RESTORE)
         win32gui.SetForegroundWindow(elem)

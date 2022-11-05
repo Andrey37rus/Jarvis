@@ -14,7 +14,6 @@ def answer_jarvis(*args):
         return
     except:
         Exception()
-    finally: return
 
 
 def home(*args):
@@ -24,7 +23,6 @@ def home(*args):
         return
     except:
         Exception()
-    finally: return
 
 
 def good_days(*args):

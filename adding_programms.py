@@ -43,7 +43,6 @@ def add_program_chunk(name_prog, path):
     data_game = dict()
     name_game = ' '.join(name_prog)
     name_game = name_game.split()
-    print(name_game)
     for elem in name_game:
         if os.path.exists(path):
             if os.path.isfile('name_program.json'):
@@ -59,7 +58,7 @@ def add_program_chunk(name_prog, path):
                 with open('name_program.json', 'w') as file:
                     json.dump(data_game, file, indent=4, ensure_ascii=False)
 
-                    print('Путь добавлен')
+                print('Путь добавлен')
         else:
             print('Ошибка! Такого пути не существует')
             add_program()

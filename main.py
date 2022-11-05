@@ -9,9 +9,12 @@ import stt
 import os
 from gree import i_need, mistake
 from fuzzywuzzy import fuzz
+import colorama
+from colorama import Fore, Back, Style
 
+colorama.init()
 
-print(f"{config.VA_NAME} (v{config.VA_VER}) начал свою работу ...")
+print(Fore.GREEN + f"{config.VA_NAME} (v{config.VA_VER}) начал свою работу ...")
 
 head = {'head': 'off', 'foot': 'off', 'activ': 'on'}
 
@@ -25,13 +28,11 @@ def header(voice: str):
                 if len(voice) == 1:
                     i_need()
                     head['head'] = 'on'
-                    del voice
                     return
                 elif len(voice) > 1:
                     num = voice.index(elem)
                     voice.pop(num)
                     off_line(' '.join(voice))
-                    del voice
                     return
 
         if head['head'] == 'on':
@@ -40,7 +41,6 @@ def header(voice: str):
                 return
             else:
                 off_line(' '.join(voice))
-                del voice
                 return
     except:
         Exception()
@@ -59,11 +59,9 @@ def off_line(voice):
                 break
     if len(good_text) == 0:
         mistake()
-        del good_text
         return
     commands_dict[' '.join(good_text)] = voice
     func_y(commands_dict)
-    del commands_dict
     return
 
 
@@ -82,7 +80,6 @@ def func_b(keys_keys, values_values):
             if keys == k:
                 head['foot'] = 'off'
                 config.commands[keys](values_values)
-                del keys_keys, values_values,
                 return
     if head['foot'] == 'on':
         head['foot'] = 'off'

@@ -1,9 +1,10 @@
 import vosk
-import sys
+from vosk import SetLogLevel
 import sounddevice as sd
 import queue
 import json
 
+SetLogLevel(-1)
 
 model = vosk.Model("model_small")
 
@@ -24,11 +25,11 @@ def va_listen(callback):
                            channels=1, callback=q_callback):
         try:
             rec = vosk.KaldiRecognizer(model, samplerate)
+            SetLogLevel(-1)
             while True:
                 data = q.get()
                 if rec.AcceptWaveform(data):
                     callback(json.loads(rec.Result())["text"])
-
                 # else:
                 #    print(rec.PartialResult())
         except:

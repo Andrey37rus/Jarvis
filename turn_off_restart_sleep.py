@@ -1,7 +1,6 @@
 from win32ctypes.core import ctypes
 
 from gree import yes_ser, off_comp
-import os
 import ctypes
 import win32security
 import win32api

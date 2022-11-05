@@ -26,7 +26,6 @@ def open(text):
 
     """ Удаление 1 слова 0 индексом из строки"""
     name_url = " ".join(text.split()[1:])
-    print('open_link', name_url)
 
     for k, v in list_links.items():
         if name_url in v:
@@ -50,7 +49,6 @@ def search_by_internet(text: str):
         if sym == 'в' or sym == 'на':
             text.remove(sym)
 
-    print('ynd:', text)
     for elem in text:
         for k, v in list_links.items():
             if elem in v:
@@ -87,8 +85,6 @@ def text_search(text: str):
             for i in elem:
                 word_list.append(i)
 
-    print('finish', word_list)
-    print('finished', ','.join(word_list))
     symbol = {'ё': '`', 'й': 'q', 'ц': 'w', 'у': 'e', 'к': 'r', 'е': 't', 'н': 'y', 'г': 'u', 'ш': 'i', 'щ': 'o',
               'з': 'p', 'х': '[', 'ъ': ']', 'ф': 'a', 'ы': 's', 'в': 'd', 'а': 'f', 'п': 'g', 'р': 'h', 'о': 'j',
               'л': 'k', 'д': 'l', 'ж': ';', 'э': "'", 'я': 'z', 'ч': 'x', 'с': 'c', 'м': 'v', 'и': 'b', 'т': 'n',

@@ -1,22 +1,12 @@
 ﻿import json
 import os
 from gree import answer_jarvis, mistake
-from playsound import playsound
 import subprocess
-from gree import thanks
 
 
 def run_programs(name: str):
     """Запуск программ"""
     name = name.split()
-    # print('open app:', name)
-    # print(type(name))
-    #
-    # name = name.split()[1:]
-    #
-    # print(name)
-    # name = ' '.join(name).lower()
-
 
     if len(name) != 0:
         if os.path.isfile("name_path_program.json"):
@@ -43,11 +33,7 @@ def run_programs(name: str):
 def close_program(name: str):
     """Закрытие программ"""
 
-    print('close app:', name)
-    print(type(name))
-
     name = name.split()[1:]
-    print(name)
     name = ' '.join(name)
     try:
         if os.path.isfile('name_path_program.json'):
@@ -61,7 +47,6 @@ def close_program(name: str):
                     slash = b.index('\\')
                     new_name = b[:slash]
                     new_name = new_name[::-1]
-                    print(new_name)
                     subprocess.call("taskkill /f /im {app}".format(app=new_name))
                     answer_jarvis()
                     return
