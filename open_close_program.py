@@ -2,11 +2,13 @@
 import os
 from gree import answer_jarvis, mistake
 import subprocess
+from colorama import Fore, Back, Style
 
 
 def run_programs(name: str):
     """Запуск программ"""
     name = name.split()
+
 
     if len(name) != 0:
         if os.path.isfile("name_path_program.json"):
@@ -19,15 +21,15 @@ def run_programs(name: str):
                             answer_jarvis()
                             subprocess.Popen(str(path))
                             return
-                print('нет файла или пути больше не существует')
+                print(Fore.RED + 'нет файла или пути больше не существует')
                 mistake()
         else:
             mistake()
-            print('Нет файла!\n'
+            print(Fore.RED + 'Нет файла!\n'
                   'добавьте программу')
     else:
         mistake()
-        print('Программы не существует!')
+        print(Fore.RED + 'Программы не существует!')
 
 
 def close_program(name: str):
@@ -52,10 +54,10 @@ def close_program(name: str):
                     return
             else:
                 mistake()
-                print('Программа не нашлась')
+                print(Fore.LIGHTYELLOW_EX + 'Программа не нашлась')
         else:
             mistake()
-            print('Нет файла!\n'
+            print(Fore.RED + 'Нет файла!\n'
                   'добавьте программу')
     except IndexError:
         IndexError()

@@ -2,7 +2,7 @@ import win32gui
 import win32con
 from win32gui import GetWindowText, GetForegroundWindow
 from gree import yes_ser
-
+from colorama import Fore, Back, Style
 
 activ_win_icon = []
 
@@ -21,7 +21,7 @@ def show_minimize(*args):
     for i in top_windows:
         if i[1] == activate:
             if i[1] == '':
-                print('danger')
+                print(Fore.RED + 'danger')
                 return
             else:
                 win32gui.ShowWindow(i[0], win32con.SW_MINIMIZE)
@@ -33,7 +33,7 @@ def show_window(*args):
     """Развернуть программу"""
 
     if len(activ_win_icon) == 0:
-        print('нет всписке свернутых программ')
+        print(Fore.LIGHTYELLOW_EX + 'нет всписке свернутых программ')
         return
     for elem in activ_win_icon[::-1]:
         win32gui.ShowWindow(elem, win32con.SW_RESTORE)

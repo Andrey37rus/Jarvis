@@ -14,12 +14,14 @@ from colorama import Fore, Back, Style
 
 colorama.init()
 
-print(Fore.GREEN + f"{config.VA_NAME} (v{config.VA_VER}) начал свою работу ...")
+print(Fore.LIGHTGREEN_EX + f"{config.VA_NAME} (v{config.VA_VER}) начал свою работу ...")
 
 head = {'head': 'off', 'foot': 'off', 'activ': 'on'}
 
 
 def header(voice: str):
+    if len(voice) > 0:
+        print(Fore.WHITE + 'voice:', voice, end='\n')
     voice = voice.split()
     name = config.VA_ALIAS
     try:

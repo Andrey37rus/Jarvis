@@ -2,6 +2,7 @@ import os
 import json
 from gree import answer_jarvis
 from playsound import playsound
+from colorama import Fore, Back, Style
 
 
 def list_programs(*args):
@@ -12,11 +13,11 @@ def list_programs(*args):
             data = json.load(file)
         print('***СПИСОК ПРОГРАММ***')
         for name in data:
-            print(name)
+            print(Fore.LIGHTGREEN_EX + name)
         print('___________________')
     else:
         playsound(os.path.join('music_jar', 'mistake.wav'))
-        print('Файл не существует')
+        print(Fore.RED + 'Файл не существует')
 
 
 def list_chunk():
@@ -29,5 +30,5 @@ def list_chunk():
 
     else:
         playsound(os.path.join('music_jar', 'mistake.wav'))
-        print('Файл не существует')
+        print(Fore.RED + 'Файл не существует')
 

@@ -3,7 +3,7 @@ from gree import home, good_days, thanks, i_need
 from minimize_maximize_window import show_minimize, show_window
 from open_close_program import run_programs, close_program
 from show_list_programms import list_programs
-from adding_programms import add_program
+from adding_programms import add_program, add_program_answer
 from reproduction import up, down, soundless, next_trak, previous_track, play
 from open_links import open, search_by_internet, text_search
 
@@ -68,7 +68,7 @@ commands = {
     'предыдущий трек': previous_track,
     'открыть': open,
     'запустить': run_programs,
-    'добавить программа': add_program,
+    'добавить программа': add_program_answer,
     'выключить компьютер': shutdown,
     'доброе утро': good_days,
     # 'протокол чистый лист':
