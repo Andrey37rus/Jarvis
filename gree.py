@@ -59,3 +59,8 @@ def yes_ser(*args):
 def new_element(*args):
     playsound(os.path.join('music_jar', 'make new element.wav'))
     return
+
+
+def restart(*args):
+    playsound(os.path.join('music_jar', 'restart_prog.wav'))
+    return

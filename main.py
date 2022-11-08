@@ -7,26 +7,27 @@ from datetime import datetime
 import config
 import stt
 import os
-from gree import i_need, mistake
+from gree import i_need, mistake, restart
 from fuzzywuzzy import fuzz
 import colorama
 from colorama import Fore, Back, Style
 
 colorama.init()
 
+
 print(Fore.LIGHTGREEN_EX + f"{config.VA_NAME} (v{config.VA_VER}) начал свою работу ...")
+restart()
 
 head = {'head': 'off', 'foot': 'off', 'activ': 'on'}
 
 
 def header(voice: str):
-    if len(voice) > 0:
-        print(Fore.WHITE + 'voice:', voice, end='\n')
     voice = voice.split()
     name = config.VA_ALIAS
     try:
         for elem in voice:
             if elem in name:
+                print(Fore.WHITE + 'voice:', ' '.join(voice), end='\n')
                 if len(voice) == 1:
                     i_need()
                     head['head'] = 'on'
@@ -100,7 +101,6 @@ def slise(keys_keys, values_values):
 
 def log_voice(text: str):
     text = text
-    print(text)
     for elem in text.split():
         if elem in config.VA_ALIAS:
             date = str(datetime.today().replace(microsecond=0))
