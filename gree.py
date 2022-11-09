@@ -64,3 +64,9 @@ def new_element(*args):
 def restart(*args):
     playsound(os.path.join('music_jar', 'restart_prog.wav'))
     return
+
+
+def as_you_wish(*args):
+    """закрывает приложение Jarvis"""
+    playsound(os.path.join('music_jar', 'As-you-wish.wav'))
+    return

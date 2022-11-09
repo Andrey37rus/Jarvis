@@ -1,6 +1,6 @@
+import sys
 from win32ctypes.core import ctypes
-
-from gree import yes_ser, off_comp
+from gree import yes_ser, off_comp, as_you_wish
 import ctypes
 import win32security
 import win32api
@@ -68,3 +68,9 @@ def hibernation(*args):
         win32api.SetSystemPowerState(False, True)
     except:
         Exception()
+
+
+def exxit(*args):
+    """Завершение приложения!"""
+    as_you_wish()
+    sys.exit()
