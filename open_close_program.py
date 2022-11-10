@@ -9,7 +9,6 @@ def run_programs(name: str):
     """Запуск программ"""
     name = name.split()
 
-
     if len(name) != 0:
         if os.path.isfile("name_path_program.json"):
             with open('name_path_program.json', 'r') as file:
