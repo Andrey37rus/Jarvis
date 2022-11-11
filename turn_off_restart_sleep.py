@@ -5,6 +5,7 @@ import ctypes
 import win32security
 import win32api
 from ntsecuritycon import *
+import os
 
 
 def AdjustPrivilege(priv, enable=1):
@@ -73,4 +74,12 @@ def hibernation(*args):
 def exxit(*args):
     """Завершение приложения!"""
     as_you_wish()
+    sys.exit()
+
+
+def reboot_program(*args):
+    """Перезагрузка программы"""
+    yes_ser()
+    path = os.path.abspath(os.path.join('reboot.py'))
+    os.startfile(path)
     sys.exit()

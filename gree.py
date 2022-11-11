@@ -70,3 +70,9 @@ def as_you_wish(*args):
     """закрывает приложение Jarvis"""
     playsound(os.path.join('music_jar', 'As-you-wish.wav'))
     return
+
+
+def I_rebooted(*args):
+    """Перезагрузка программы"""
+    playsound(os.path.join('music_jar', 'I_rebooted.wav'))
+    return

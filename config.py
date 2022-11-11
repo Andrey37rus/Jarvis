@@ -1,4 +1,4 @@
-from turn_off_restart_sleep import shutdown, sleep_mode, restart, hibernation, exxit
+from turn_off_restart_sleep import shutdown, sleep_mode, restart, hibernation, exxit, reboot_program
 from gree import home, good_days, thanks, i_need
 from minimize_maximize_window import show_minimize, show_window
 from open_close_program import run_programs, close_program
@@ -52,7 +52,8 @@ chunk = {
     'искать': ('искать', 'ищу', 'ищи', 'найди', 'найти'),
     'поиск': ('поиск', 'поискать', ''),
     'мёртвый': ('мертвый', 'мертвец', 'мертвая', 'мертвеца', 'мертвецам', 'мёртвые'),
-    'конец': ('конец', '', '')
+    'конец': ('конец', '', ''),
+
     }
 
 
@@ -84,6 +85,7 @@ commands = {
     'я дома': home,
     'play': play,
     'конец': exxit,
+    'перезагрузить программа': reboot_program
 }
 
 
