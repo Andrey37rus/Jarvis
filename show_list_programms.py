@@ -32,3 +32,8 @@ def list_chunk():
         playsound(os.path.join('music_jar', 'mistake.wav'))
         print(Fore.RED + 'Файл не существует')
 
+#
+# def commands_list(*args):
+#     """Показывает список команд применяемых голосом"""
+#
+#     print(Fore.)

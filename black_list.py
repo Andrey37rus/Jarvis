@@ -494,12 +494,7 @@ import os
 
 import subprocess
 
-x = int(input(':'))
-if x == 2:
-    path = os.path.abspath(os.path.join('remember.py'))
-    print(path)
-    os.startfile(path)
-    sys.exit()
+
 # elif x == 1:
 #     # os.execl(sys.executable, sys.executable, *sys.argv)
 #     # os.execv(sys.executable, ['python3'] + sys.argv)
@@ -523,3 +518,76 @@ if x == 2:
 #
 # path = r"D:\games\Mortal Kombat X\Binaries\Retail\MK10.exe"
 # subprocess.Popen(str(path))
+
+from colorama import Fore, Back, Style
+from config import commands
+import json
+
+data = {
+    'искать': "служит для поиска в интернете. Пример: {jarvis} + {искать} + Ваш запрос{ каком году родился Пушкин}",
+    'поиск': "служит для в вода текста в поисковой строке. Пример: {jarvis} + {искать} + Ваш запрос{смотреть фильм Хоббит}",
+    'ты здесь': "jarvis отвечает на ваш вопрос: -Да сэр",
+    'спасибо': "jarvis отвечает на вашу благодарность: -Всегда к вашим услугам сэр",
+    'громче': "Служит для увеличения громкости. Пример:  {jarvis} + {Громче} ",
+    'тихо': "Служит для уменьшения громкости. Пример:  {jarvis} + {Тише} ",
+    'без звука': "Сделать без звука весь компьютер. Пример:  {jarvis} + {без звука}",
+    'звук': "Сделать звук к исходному значению на всем компьютер. Пример:  {jarvis} + {звук}",
+    'следующий трек': "Служит для переключение трека в play-листе. Пример:  {jarvis} + {следующий трек}",
+    'предыдущий трек': "Служит для переключение трека в play-листе. Пример:  {jarvis} + {предыдущий трек}",
+    'открыть': "Служит для открытия браузерных ссылок таких как yandex, google, you-tube. Пример: {jarvis} + {открыть} + {you-tube}",
+    'запустить': "",
+    'добавить программа': "",
+    'выключить компьютер': "",
+    'доброе утро': "",
+    'перезагрузить компьютер': "",
+    'спящий режим': "",
+    'мёртвый режим': "",
+    'закрыть': "",
+    'выключить': "",
+    'список программа': "",
+    'свернуть': "",
+    'развернуть': "",
+    'я дома': "",
+    'play': "",
+    'конец': "",
+    'перезагрузить программа': "",
+    'список команд': "",
+}
+
+
+def commands_list():
+    """Показывает список команд применяемых голосом"""
+
+    with open('commands list.json', 'w') as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
+
+
+
+
+    # with open('name_path_program.json', 'r') as file:
+    #     data = json.load(file)
+    # data[name] = path
+    #
+    # with open('name_path_program.json', 'w') as file:
+    #     json.dump(data, file, indent=4, ensure_ascii=False)
+    #     add_program_chunk(name_prog, path)
+    #     print('Путь добавлен')
+    #     new_element()
+    # else:
+    #     data[name] = path
+    #     with open('name_path_program.json', 'w') as file:
+    #         json.dump(data, file, indent=4, ensure_ascii=False)
+    #         add_program_chunk(name_prog, path)
+    #         print('Путь добавлен')
+    #         new_element()
+
+
+
+    #
+    # print(Fore.CYAN + '\n', '*' * 7, 'список команд', '*' * 7,  end='\n' * 2)
+    #
+    # for key in commands.keys():
+    #     print('*' * 2, 'jarvis', key, '*' * 2)
+
+
+commands_list()

@@ -3,6 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/configs.json" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/name_program.json" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/reboot.py" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/../reboot/reboot_down.py" charset="windows-1251" />
     <file url="PROJECT" charset="windows-1251" />
   </component>
 </project>

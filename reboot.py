@@ -1,8 +1,14 @@
+# -*- coding: utf-8 -*-
 import os
 import sys
 from gree import I_rebooted
+import subprocess
 
-path = os.path.abspath(os.path.join('main.py'))
-os.startfile(path)
+# здесь закрываем файл main
+path = os.path.join("jarvis.exe")
+subprocess.call("taskkill /f /im {app}".format(app=path, encoding="utf-8"))
+
+
+# здесь открываем файл main и закрываем файл reboot_down
 I_rebooted()
-sys.exit()
+subprocess.Popen(path)
