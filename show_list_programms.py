@@ -48,4 +48,4 @@ def commands_list(*args):
     print(Fore.CYAN + '\n', '*' * 7, 'список команд', '*' * 7, end='\n' * 2)
 
     for k, v in data.items():
-        print(Fore.CYAN + '--', k, v, '--')
+        print(Fore.CYAN + '--', "'" + k + "-'", v, '--')

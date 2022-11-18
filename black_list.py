@@ -519,6 +519,8 @@ import subprocess
 # path = r"D:\games\Mortal Kombat X\Binaries\Retail\MK10.exe"
 # subprocess.Popen(str(path))
 
+######################################################################################################################1
+
 from colorama import Fore, Back, Style
 from config import commands
 import json
@@ -568,17 +570,12 @@ def commands_list():
     """Читает из файла.json"""
     with open('commands list.json', 'r') as file:
         data = json.load(file)
-    # print(type(data))
 
     print(Fore.CYAN + '\n', '*' * 7, 'список команд', '*' * 7, end='\n' * 2)
 
     for k, v in data.items():
-        print(Fore.CYAN + '--', k, v, '--')
-
-
-
-
-
+        print(Fore.CYAN + '--', "'" + k + "-'", v, '--')
 
 
 commands_list()
+
