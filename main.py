@@ -27,7 +27,7 @@ def header(voice: str):
     try:
         for elem in voice:
             if elem in name:
-                print(Fore.WHITE + 'voice:', ' '.join(voice), end='\n')
+                print(Fore.WHITE + 'voice:', ' '.join(voice).replace(elem, 'jarvis'), end='\n')
                 if len(voice) == 1:
                     i_need()
                     head['head'] = 'on'
@@ -50,7 +50,7 @@ def header(voice: str):
 
 
 def off_line(voice):
-    # log_voice(voice)
+    log_voice(voice)
     good_text = list()
     commands_dict = dict()
     head['head'] = 'off'

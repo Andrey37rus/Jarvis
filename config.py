@@ -2,7 +2,7 @@ from turn_off_restart_sleep import shutdown, sleep_mode, restart, hibernation, e
 from gree import home, good_days, thanks, i_need
 from minimize_maximize_window import show_minimize, show_window
 from open_close_program import run_programs, close_program
-from show_list_programms import list_programs
+from show_list_programms import list_programs, commands_list
 from adding_programms import add_program, add_program_answer
 from reproduction import up, down, soundless, next_trak, previous_track, play
 from open_links import open, search_by_internet, text_search
@@ -10,7 +10,7 @@ from open_links import open, search_by_internet, text_search
 
 VA_NAME = 'Джарвис'
 
-VA_VER = "2.0"
+VA_VER = "1.0"
 
 VA_ALIAS = ('джарвис', 'дарвис', 'харвиc', 'жарвис', 'джой', 'джервис', 'чарльз', 'чавез', 'чавес', 'jarvis', 'джаред',
             'джери', 'чарли', 'джек', 'джеки', 'джейк')
@@ -53,7 +53,8 @@ chunk = {
     'поиск': ('поиск', 'поискать', ''),
     'мёртвый': ('мертвый', 'мертвец', 'мертвая', 'мертвеца', 'мертвецам', 'мёртвые'),
     'конец': ('конец', '', ''),
-    'команд': ('команд', 'команда', 'команды', '')
+    'команд': ('команд', 'команда', 'команды', ''),
+    'лудший': ('лудший', 'лучший', 'лудшая')
 
     }
 
@@ -63,6 +64,7 @@ commands = {
     'поиск': text_search,
     'ты здесь': i_need,
     'спасибо': thanks,
+    'ты лудший': thanks,
     'громче': up,
     'тихо': down,
     'без звук': soundless,
@@ -87,7 +89,7 @@ commands = {
     'play': play,
     'конец': exxit,
     'перезагрузить программа': reboot_program,
-    # 'список команд': commands_list,
+    'список команд': commands_list,
 }
 
 
