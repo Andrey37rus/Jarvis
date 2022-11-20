@@ -1,4 +1,5 @@
-﻿import json
+﻿# -*- coding: utf-8 -*-
+import json
 import os
 from gree import answer_jarvis, mistake
 import subprocess

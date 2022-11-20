@@ -31,14 +31,14 @@ def add_program(*args):
             with open('name_path_program.json', 'w') as file:
                 json.dump(data, file, indent=4, ensure_ascii=False)
                 add_program_chunk(name_prog, path)
-                print('Путь добавлен')
+                print(Fore.LIGHTGREEN_EX + 'Путь добавлен')
                 new_element()
         else:
             data[name] = path
             with open('name_path_program.json', 'w') as file:
                 json.dump(data, file, indent=4, ensure_ascii=False)
                 add_program_chunk(name_prog, path)
-                print('Путь добавлен')
+                print( Fore.LIGHTGREEN_EX + 'Путь добавлен')
                 new_element()
     else:
         print(Fore.RED + 'Ошибка! Такого пути не существует')
@@ -51,21 +51,14 @@ def add_program_chunk(name_prog, path):
     name_game = ' '.join(name_prog)
     name_game = name_game.split()
     for elem in name_game:
-        if os.path.exists(path):
-            if os.path.isfile('name_program.json'):
-                with open('name_program.json', 'r') as file:
-                    data_game = json.load(file)
-                data_game[elem] = elem
+        if os.path.isfile('name_program.json'):
+            with open('name_program.json', 'r') as file:
+                data_game = json.load(file)
+            data_game[elem] = elem
 
-                with open('name_program.json', 'w') as file:
-                    json.dump(data_game, file, indent=4, ensure_ascii=False)
-                    print(Fore.LIGHTGREEN_EX + 'Путь добавлен')
-            else:
-                data_game[elem] = elem
-                with open('name_program.json', 'w') as file:
-                    json.dump(data_game, file, indent=4, ensure_ascii=False)
-
-                print(Fore.LIGHTGREEN_EX + 'Путь добавлен')
+            with open('name_program.json', 'w') as file:
+                json.dump(data_game, file, indent=4, ensure_ascii=False)
         else:
-            print(Fore.RED + 'Ошибка! Такого пути не существует')
-            add_program()
+            data_game[elem] = elem
+            with open('name_program.json', 'w') as file:
+                json.dump(data_game, file, indent=4, ensure_ascii=False)
